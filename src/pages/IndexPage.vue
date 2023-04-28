@@ -19,6 +19,9 @@
         </q-icon>
       </template>
     </q-input>
+    <q-inner-loading :showing="visible">
+      <q-spinner-puff size="10em" color="red" />
+      </q-inner-loading>
     <q-table
       title="Mapa Cirúrgico"
       :pagination="pagination"
@@ -59,9 +62,11 @@ import { useAgenda } from "src/stores/agendas.js";
 
 export default defineComponent({
   name: "IndexPage",
+  
   setup() {
     const horarios = ref([]);
     const agenda = useAgenda();
+    const visible = ref(false)
     const columns = [
       { name: "hora", field: "horario", align: "left" },
       { name: "paciente", field: "paciente", align: "left" },
@@ -74,6 +79,7 @@ export default defineComponent({
     });
 
     const getHorarios = async () => {
+      visible.value = true
       const { list } = horariosService(
         agenda.agenda + "/" + agenda.tipoatendimento + "/" + agenda.data
       );
@@ -116,7 +122,9 @@ export default defineComponent({
             estatus: consultaestado,
           };
         });
+        visible.value = false
       } catch (error) {
+        visible.value = false
         console.log(error);
       }
     };
@@ -127,6 +135,13 @@ export default defineComponent({
     };
 
     return {
+      visible,
+      pagination: {
+
+        descending: false,
+        page: 0,
+        rowsPerPage: 0
+      },
       horarios,
       columns,
       date: ref(agenda.data),

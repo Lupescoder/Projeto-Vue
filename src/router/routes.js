@@ -14,6 +14,14 @@ const routes = [
           auth: true,
         },
       },
+      {
+        path: "/perfil",
+        name: "perfil",
+        component: () => import("pages/Perfil.vue"),
+        meta: {
+          auth: true,
+        },
+      },
     ],
   },
   {
