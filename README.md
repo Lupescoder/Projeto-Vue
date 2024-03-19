@@ -1,4 +1,4 @@
-# Eba App (eba-mobile)
+# Projeto com VUE Mobile
 
 Eba Mobile Project
 
