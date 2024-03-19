@@ -1,12 +1,17 @@
 # Projeto com VUE Mobile
 
-Eba Mobile Project
+Projeto Simples de Vue para aplicativo Mobile
 
 ## Install the dependencies
 ```bash
 yarn
 # or
 npm install
+```
+
+## Install Quasar CLI
+```bash
+npm i -g @quasar/cli
 ```
 
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
